@@ -256,7 +256,6 @@ function News({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) {
 
   const handleLogout = async () => {
     await logout();
-    window.location.href = "/landing";
   };
 
   if (isLoading || userIsLoading)
