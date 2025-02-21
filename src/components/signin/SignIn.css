@@ -49,7 +49,7 @@
 
 .signin-btn {
   font-size: 1.5rem;
-  width: clamp(10rem, 12cqi, 14rem);
+  width: clamp(10rem, 12cqi, 18rem);
   border: 1px solid #2b0570;
   border-radius: 5rem;
   padding: 1rem;
