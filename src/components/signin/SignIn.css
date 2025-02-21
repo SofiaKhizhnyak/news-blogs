@@ -1,0 +1,75 @@
+.signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+}
+
+.signin-form {
+  padding: 7rem 4rem;
+  border: 1px solid #2b0570;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 0 1rem;
+  border-radius: 2rem;
+  background-color: #d3b9dd1a;
+}
+
+.signin-heading {
+  font-size: 5rem;
+  color: #ddd;
+  text-shadow: 0 0 0.5rem rgba(31, 8, 36, 0.5);
+  margin-bottom: 2rem;
+}
+.signin input {
+  font-family: "Comfortaa", sans-serif;
+  width: 30rem;
+  height: 4rem;
+  background-color: #06070911;
+  border: none;
+  border-radius: 5rem;
+  padding: 0 4rem 0 2rem;
+  color: #fff;
+  transition: width 0.3s;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s;
+}
+
+.signin input:focus {
+  border: 1px dashed #9dedf75b;
+  width: 35rem;
+}
+.signin input::placeholder {
+  color: #dddddda9;
+}
+
+.signin input:focus::placeholder {
+  color: transparent;
+}
+
+.signin-btn {
+  font-size: 1.5rem;
+  width: clamp(10rem, 12cqi, 14rem);
+  border: 1px solid #2b0570;
+  border-radius: 5rem;
+  padding: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  color: #ffffff;
+  background: #2b0570;
+  transition: all 0.2s;
+  margin-top: 4rem;
+}
+
+.signin-btn:hover {
+  border-width: 2px;
+  font-size: 1.7rem;
+  font-weight: 500;
+  background-color: transparent;
+  color: #2b0570;
+}
+
+.signin-btn:active {
+  transform: translateY(0.3rem);
+}
