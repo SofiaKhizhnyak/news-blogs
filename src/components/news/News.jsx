@@ -256,7 +256,7 @@ function News({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) {
 
   const handleLogout = async () => {
     await logout();
-    <Navigate to="/landing" />;
+    window.location.href = "/landing";
   };
 
   if (isLoading || userIsLoading)
@@ -308,7 +308,7 @@ function News({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) {
                 }}
               />
             ) : (
-              <div className="user-icon">{userData.image}</div>
+              <div className="user-icon">{userData?.image}</div>
             )}
             <p> {userName}&#39;s Blog</p>
             <div className="user-button">

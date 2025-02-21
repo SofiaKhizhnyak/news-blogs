@@ -8,7 +8,7 @@ function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   const [imgError, setImgError] = useState(null);
   const [icon, setIcon] = useState(null);
   const [iconError, setIconError] = useState(null);
@@ -32,8 +32,8 @@ function SignUp() {
       } catch (err) {
         setLocalError(err.message);
       } finally {
-        setImage(null);
-        setIcon(null);
+        setImage("");
+        setIcon("");
       }
     }
   };
@@ -60,7 +60,7 @@ function SignUp() {
 
   const handleEmojiSelect = (emoji) => {
     setIcon(emoji.emoji);
-    setImage(null);
+    setImage("");
     setShowEmojiPicker(false);
   };
 

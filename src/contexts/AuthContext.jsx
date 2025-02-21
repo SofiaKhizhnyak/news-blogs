@@ -14,7 +14,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
-import { Navigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -68,9 +67,10 @@ export const AuthProvider = ({ children }) => {
       );
       const user = userCredential.user;
 
-      // 2. Update profile with name
+      // 2. Update profile with name and image
       await updateProfile(user, {
         displayName: name,
+        photoURL: image || icon,
       });
 
       // 3. Add user data to Firestore - Use user.uid as document ID
@@ -81,11 +81,24 @@ export const AuthProvider = ({ children }) => {
         image: image || icon,
       });
 
-      // 4. Update local state
-      setCurrUser(user);
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(user));
+      // 4. Wait for Firebase Auth to propagate the changes
+      await new Promise((resolve) => {
+        const unsubscribe = onAuthStateChanged(auth, (updatedUser) => {
+          if (updatedUser) {
+            // Update local state
+            setCurrUser(updatedUser);
+            localStorage.setItem(
+              LOCAL_STORAGE_KEY,
+              JSON.stringify(updatedUser)
+            );
+            resolve();
+            unsubscribe(); // Stop listening after the first update
+          }
+        });
+      });
 
-      return <Navigate to="/" />;
+      // 5. Navigate to home page
+      window.location.href = "/";
     } catch (err) {
       console.error("Error during signup:", err);
       setError(err.message);
